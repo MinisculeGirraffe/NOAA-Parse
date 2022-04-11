@@ -6,6 +6,6 @@ import { WindRecord } from "./lib/Wind"
 
 
 
-export function parseNullInt(number,nullValue,scale = 1) {
-   return number != nullValue ? parseInt(number,10) / scale : null
+export function parseNullInt(number, nullValue, scale = 1) {
+    return number != nullValue ? parseInt(number, 10) / scale : null
 }
