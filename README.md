@@ -7,8 +7,11 @@ The ISD Parsing Reference manual can be found [here](https://www.ncei.noaa.gov/d
 
 Complete:
 
-Precipitation
+- Precipitation
 
 In Progress:
-CloudSolar
+
+- CloudSolar
+
+
 
