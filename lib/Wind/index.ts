@@ -23,7 +23,7 @@ export interface WindRecord {
 
 }
 // For WND
-export function parseWind<WindRecord>(string: string) {
+export function parseWND<WindRecord>(string: string) {
     const [direction, directionQC, obsTypeCode, speed, speedQC] = string.split(',')
 
     return {
@@ -38,23 +38,58 @@ export function parseWind<WindRecord>(string: string) {
 // Wind Data: SUPPLEMENTARY-WIND-OBSERVATION
 // OA1-OA3
 // Page 98
+function parseOAx (string) {
+    const [] = string.split(",")
+    return {
+
+    }
+}
 
 // Wind Data: Hourly/Sub-Hourly Wind Section
 // OB1-OB2
 // Page 99
+function parseOBx (string) {
+    const [] = string.split(",")
+    return {
+
+    }
+}
 
 // Wind Data: WIND-GUST-OBSERVATION
 // OC1
 // Page 101
+function parseOCx (string) {
+    const [] = string.split(",")
+    return {
 
+    }
+}
 // Wind Data: SUPPLEMENTARY-WIND-OBSERVATION
 // OD1-OD3
 // Page 101
+function parseODx (string) {
+    const [] = string.split(",")
+    return {
+
+    }
+}
 
 // Wind Data: SUMMARY-OF-DAY-WIND-OBSERVATION
 // OE1-OE3
 // Page 102
+function parseOEx (string) {
+    const [] = string.split(",")
+    return {
+
+    }
+}
 
 // RELATIVE HUMIDITY occurrence identifier
 // RH1 – RH3
 // Page 103
+function parseRHx (string) {
+    const [] = string.split(",")
+    return {
+
+    }
+}

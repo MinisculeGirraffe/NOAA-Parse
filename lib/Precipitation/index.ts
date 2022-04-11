@@ -32,11 +32,12 @@ function parse3DateString(date1, date2, date3) {
 // AA1-AA4
 // Page 13
 // "01,0000,9,5"
-function parsePrecipitation(string) {
+function parseAAx(string) {
     const [period, depth, condition, qc] = string.split(',')
     return {
         hours: parseNullInt(period, "99"),
         depth: parseNullInt(depth, "9999", 10), // in MM
+        depthUnit: "mm",
         condition: parseConditionCode(condition),
         quality: parseQualityCode(qc)
     }
@@ -46,10 +47,11 @@ function parsePrecipitation(string) {
 // AB1
 //Page 14
 // "01836,9,6"
-function parsePrecipitationMonthly(string) {
+function parseAB1(string) {
     const [depth, condition, quality] = string.split(',')
     return {
         depth: parseNullInt(depth, "99999", 10),  //in "millimeters"
+        depthUnit: "mm",
         condition: parseConditionCode(condition),
         quality: parseQualityCode(quality)
     }
@@ -58,7 +60,7 @@ function parsePrecipitationMonthly(string) {
 // PRECIPITATION-OBSERVATION-HISTORY
 // AC1
 // Page 15
-function parsePrecipitationHistory(string) {
+function parseAC1(string) {
     const [duration, characteristic, quality] = string.split(',')
     return {
         duration: {
@@ -77,10 +79,11 @@ function parsePrecipitationHistory(string) {
 // AD1
 // Page 15
 // "00579,9,2323,9999,9999,6"
-function parsePrecipitationMonthlyGreatest(string) {
+function parseAD1(string) {
     const [depth, condition, date1, date2, date3, quality] = string.split(',')
     return {
         depth: parseNullInt(depth, "99999", 10),  //in "millimeters"
+        depthUnit: "mm",
         dates: parse3DateString(date1, date2, date3),
         condition: parseConditionCode(condition),
         quality: parseQualityCode(quality)
@@ -91,7 +94,7 @@ function parsePrecipitationMonthlyGreatest(string) {
 // AE1
 // Page 17
 // 12,6,08,6,99,9,03,6
-function parsePrecipitationDayCountForMonth(string) {
+function parseAE1(string) {
     const [
         point01, point01_quality,
         point10, point10_quality,
@@ -121,14 +124,15 @@ function parsePrecipitationDayCountForMonth(string) {
 // PRECIPITATION-ESTIMATED-OBSERVATION identifier
 // AG1
 //Page 18
-function parsePrecipitationEstimated(string) {
+function parseAG1(string) {
     const [discrepancy, depth] = string.split(',')
     return {
         discrepancy: {
             code: discrepancy,
             message: discrepancy_codes[discrepancy]
         },
-        depth: parseNullInt(depth, "999")
+        depth: parseNullInt(depth, "999"),
+        depthUnit: "mm",
     }
 }
 
@@ -136,11 +140,12 @@ function parsePrecipitationEstimated(string) {
 // AH1-AH6
 // Page 19
 // 005,0043,9,240214,5 
-function parsePrecipitationMaxShortForMonth(string) {
+function parseAHx(string) {
     const [period, depth, condition, end, quality] = string.split(',')
     return {
         minutes: parseNullInt(period, "999"),
         depth: parseNullInt(depth, "9999", 10), // in MM
+        depthUnit: "mm",
         condition: parseConditionCode(condition),
         end: parseDateString(end),
         quality: parseQualityCode(quality)
@@ -151,21 +156,23 @@ function parsePrecipitationMaxShortForMonth(string) {
 // Page 20
 // This data group is identical to the AH1-6 group, for the purpose of allowing up to 12 occurrences of these reports.
 // Above function can be used
-
+const parseAIx = parseAHx
 
 // SNOW-DEPTH identifier
 // AJ1
 // Page 21
-function parseSnowDepth(string) {
+function parseAJ1(string) {
     const [
         snowDepth, snowCondition, snowQuality,
         waterDepth, waterCondition, waterQuality
     ] = string.split(',')
     return {
         snowDepth: parseNullInt(snowDepth, "9999"), // in CM
+        snowDepthUnit: "cm",
         snowCondition: parseConditionCode(snowCondition),
         snowQuality: parseQualityCode(snowQuality),
         waterDepth: parseNullInt(waterDepth, "999999", 10), // in MM
+        waterDepthUnit: "mm",
         waterCondition: parseConditionCode(waterCondition),
         waterQuality: parseConditionCode(waterQuality)
     }
@@ -174,10 +181,11 @@ function parseSnowDepth(string) {
 // SNOW-DEPTH GREATEST DEPTH ON THE GROUND, FOR THE MONTH
 // AK1
 // Page 22
-function parseGreatestSnowDepthForMonth(string) {
+function parseAK1(string) {
     const [depth, condition, date, quality] = string.split(',')
     return {
         depth: parseNullInt(depth, "9999"),
+        depthUnit: "cm",
         condition: parseConditionCode(condition),
         date: parseDateString(date),
         quality: parseQualityCode(quality)
@@ -187,11 +195,12 @@ function parseGreatestSnowDepthForMonth(string) {
 // SNOW-ACCUMULATION
 // AL1-AL4
 // Page 23
-function parseSnowAccumulation(string) {
+function parseALx(string) {
     const [hours, depth, condition, quality] = string.split(',')
     return {
         hours: parseNullInt(hours, "99"),
         depth: parseNullInt(depth, "999"), // in CM
+        depthUnit: "cm",
         condition: parseConditionCode(condition),
         quality: parseQualityCode(quality)
     }
@@ -200,10 +209,11 @@ function parseSnowAccumulation(string) {
 // SNOW-ACCUMULATION GREATEST AMOUNT IN 24 HOURS, FOR THE MONTH
 // AM1
 // Page 24
-function parseSnowAccumulationForMonth(string) {
+function parseAM1(string) {
     const [depth, condition, date1, date2, date3, quality] = string.split(',')
     return {
         depth: parseNullInt(depth, "9999", 10), // in CM
+        depthUnit: "cm",
         condition: parseConditionCode(condition),
         date: parse3DateString(date1, date2, date3),
         quality: parseQualityCode(quality)
@@ -212,11 +222,12 @@ function parseSnowAccumulationForMonth(string) {
 // SNOW-ACCUMULATION FOR THE DAY/MONTH
 // AN1
 // Page 25
-function parseSnowAccumulationForDayMonth(string) {
+function parseAN1(string) {
     const [period, depth, condition, quality] = string.split(',')
     return {
         hours: parseNullInt(period, "999"),
         depth: parseNullInt(depth, "9999", 10), // in CM
+        depthUnit: "cm",
         condition: parseConditionCode(condition),
         quality: parseQualityCode(quality)
     }
@@ -225,11 +236,12 @@ function parseSnowAccumulationForDayMonth(string) {
 // LIQUID-PRECIPITATION
 // AO1-AO4
 //Page 26
-function ParseLiquidPercipitation(string) {
+function parseAOx(string) {
     const [period, depth, condition, quality] = string.split(',')
     return {
         minutes: parseNullInt(period, "999"),
         depth: parseNullInt(depth, "9999", 10), // in MM
+        depthUnit: "mm",
         condition: parseConditionCode(condition),
         quality: parseQualityCode(quality)
     }

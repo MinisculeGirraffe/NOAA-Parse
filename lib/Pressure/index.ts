@@ -1,48 +1,89 @@
+import { parseQualityCode } from "../qualityCodes"
+import { parseNullInt } from '../../index'
+
+
 /*
 Unit: Hectopascals
 Example: 99999,9
-
+SLP
 ATMOSPHERIC-PRESSURE-OBSERVATION sea level pressure
 ATMOSPHERIC-PRESSURE-OBSERVATION sea level pressure quality code
 */
 
-export interface PressureRecord {
-    pressureValue: number,
-    pressureQC: string
-}
 
-export function parsePressure <PressureRecord>(string: string) {
-    const [pressure, qc] = string.split(',')
+
+function parseSLP (string) {
+    const [pressure, quality] = string.split(',')
     return {
-        pressureValue: pressure !== "99999" ? parseInt(pressure, 10) / 10 : null,
-        pressureQC: qc
+        pressure: parseNullInt(pressure,"99999",10),
+        unit: "hectopascals",
+        quality: parseQualityCode(quality)
     }
 }
 
 // ATMOSPHERIC-PRESSURE-OBSERVATION identifier
 // MA1
 // Page 88
+function parseMA1 (string) {
+    const [] = string.split(",")
+    return {
 
+    }
+}
 // ATMOSPHERIC-PRESSURE-CHANGE identifier
 // MD1
 // Page 89
+function parseMD1 (string) {
+    const [] = string.split(",")
+    return {
 
+    }
+}
 // GEOPOTENTIAL-HEIGHT-ISOBARIC-LEVEL
 // ME1
 // Page 90
+function parseME1 (string) {
+    const [] = string.split(",")
+    return {
+
+    }
+}
 
 // ATMOSPHERIC-PRESSURE-OBSERVATION (STP/SLP)
 // MF1
 // Page 91
+function parseMF1 (string) {
+    const [] = string.split(",")
+    return {
 
+    }
+}
 // ATMOSPHERIC-PRESSURE-OBSERVATION
 // MG1
 // Page 92
+function parseMG1 (string) {
+    const [] = string.split(",")
+    return {
+
+    }
+}
 
 // ATMOSPHERIC-PRESSURE-OBSERVATION FOR THE MONTH
 // MH1
 // Page 93
+function parseMH1 (string) {
+    const [] = string.split(",")
+    return {
+
+    }
+}
 
 // ATMOSPHERIC-PRESSURE-OBSERVATION FOR THE MONTH
 // MK1
 // Page 94
+function parseMK1 (string) {
+    const [] = string.split(",")
+    return {
+
+    }
+}

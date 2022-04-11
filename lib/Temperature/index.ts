@@ -3,7 +3,7 @@ export interface TempRecord {
     tempQC: string | null,
 }
 
-
+/*
 const codes = {
     "Temperature": {
         parser: ParseTemp,
@@ -47,9 +47,9 @@ const codes = {
     }
 
 }
-
+*/
 // For TMP and DEW
-export function ParseTemp<TempRecord>(input: string) {
+export function ParseTMP(input) {
     const keys = ["temperature","temperature_quality"]
     const [tmpStr, qc] = input.split(',')
     return {
@@ -57,7 +57,7 @@ export function ParseTemp<TempRecord>(input: string) {
         temperature_quality: qc
     }
 }
-export function ParseDewTemp(input) {
+export function parseDEW(input) {
     const [tmpStr, qc] = input.split(',')
     return {
         dew_temperature: tmpStr != "+9999" ? parseInt(tmpStr, 10) / 10 : null,
@@ -68,52 +68,72 @@ export function ParseDewTemp(input) {
 // EXTREME-AIR-TEMPERATURE
 // KA1-KA4
 // Page 82
-function parseExtremeTemp(string) {
-   
+function parseKAx (string) {
+    const [] = string.split(",")
+    return {
 
+    }
 }
 
 // AVERAGE-AIR-TEMPERATURE
 // KB1-KB3
 // Page 83
-function parseAverageAirTemp() {
-    
+function parseKBx (string) {
+    const [] = string.split(",")
+    return {
+
+    }
 }
 
 // EXTEME-AIR-TEMPERATURE FOR THE MONTH
 // KC1-KC2
 // Page 84
-function parseExtremeTempMonth() {
-    
+function parseKCx (string) {
+    const [] = string.split(",")
+    return {
+
+    }
 }
 
 // HEATING-COOLING-DEGREE-DAYS
 // KD1-KD2
 // Page 85
-function parseHeatingCoolingDegreeDays() {
-  
+function parseKDx (string) {
+    const [] = string.split(",")
+    return {
+
+    }
 }
 
 
 // EXTREME TEMPERATURES, NUMBER OF DAYS EXCEEDING CRITERIA, FOR THE MONTH
 // KE1
 // Page 85
-function parseExtremeTempExceedingCriteriaMonth() {
-  
+function parseKE1 (string) {
+    const [] = string.split(",")
+    return {
+
+    }
 }
 
 // Hourly Calculated Temperature
 // KF1
 // Page 87
-function parseHourlyCalculatedTemp() {
-   
+function parseKF1 (string) {
+    const [] = string.split(",")
+    return {
+
+    }
 }
 
 // Hourly Calculated Temperature
 // KG1-KG2
 // Page 87
-function parseHourlyCalculatedTemp2() {
-    
+function parseKGx (string) {
+    const [] = string.split(",")
+    return {
+
+    }
 }
 
 

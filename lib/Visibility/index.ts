@@ -25,7 +25,7 @@ export interface VisibilityRecord {
     distanceVariableQC: string
 }
 
-export function parseVisibility(string: string) {
+export function parseVIS(string: string) {
     const [distance, distanceQC, distanceVariable, distanceVariableQC] = string.split(',')
 
     return {
@@ -39,3 +39,10 @@ export function parseVisibility(string: string) {
 // RUNWAY-VISUAL-RANGE-OBSERVATION
 // ED1
 // Page 53
+
+function parseED1 (string) {
+    const [] = string.split(",")
+    return {
+
+    }
+}
