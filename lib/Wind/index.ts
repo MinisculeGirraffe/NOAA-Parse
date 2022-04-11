@@ -37,20 +37,24 @@ export function parseWind<WindRecord>(string: string) {
 
 // Wind Data: SUPPLEMENTARY-WIND-OBSERVATION
 // OA1-OA3
+// Page 98
 
 // Wind Data: Hourly/Sub-Hourly Wind Section
 // OB1-OB2
+// Page 99
 
 // Wind Data: WIND-GUST-OBSERVATION
 // OC1
+// Page 101
 
 // Wind Data: SUPPLEMENTARY-WIND-OBSERVATION
 // OD1-OD3
+// Page 101
 
 // Wind Data: SUMMARY-OF-DAY-WIND-OBSERVATION
 // OE1-OE3
+// Page 102
 
-// Relative Humidity -------------------------
-
-// RELATIVE HUMIDITY
-// RH1-RH3
+// RELATIVE HUMIDITY occurrence identifier
+// RH1 – RH3
+// Page 103

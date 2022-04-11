@@ -19,23 +19,30 @@ export function parsePressure <PressureRecord>(string: string) {
     }
 }
 
-// pressure data
+// ATMOSPHERIC-PRESSURE-OBSERVATION identifier
 // MA1
+// Page 88
 
-// atmospheric pressure change
+// ATMOSPHERIC-PRESSURE-CHANGE identifier
 // MD1
+// Page 89
 
 // GEOPOTENTIAL-HEIGHT-ISOBARIC-LEVEL
 // ME1
+// Page 90
 
 // ATMOSPHERIC-PRESSURE-OBSERVATION (STP/SLP)
 // MF1
+// Page 91
 
 // ATMOSPHERIC-PRESSURE-OBSERVATION
 // MG1
+// Page 92
 
 // ATMOSPHERIC-PRESSURE-OBSERVATION FOR THE MONTH
 // MH1
+// Page 93
 
 // ATMOSPHERIC-PRESSURE-OBSERVATION FOR THE MONTH
 // MK1
+// Page 94

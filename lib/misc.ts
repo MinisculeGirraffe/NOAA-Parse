@@ -1,0 +1,7 @@
+// SEA-SURFACE-TEMPERATURE-OBSERVATION identifier
+// SA1
+// Page 104
+
+// SOIL-TEMPERATURE identifier
+// ST1
+// Page 104
