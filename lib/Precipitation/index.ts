@@ -1,5 +1,5 @@
 import { parseQualityCode } from "../qualityCodes"
-import { parseNullInt } from '../../index'
+import { parseNullInt } from '../../utils/index'
 import {characteristic_code,condition_codes,discrepancy_codes,duration_codes} from './codes'
 
 

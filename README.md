@@ -5,7 +5,10 @@ Library intended to parse the [NOAA ISD dataset](https://www.ncei.noaa.gov/data/
 
 The ISD Parsing Reference manual can be found [here](https://www.ncei.noaa.gov/data/global-hourly/doc/isd-format-document.pdf). 
 
-Complete
+Complete:
+
 Precipitation
 
+In Progress:
+CloudSolar
 
