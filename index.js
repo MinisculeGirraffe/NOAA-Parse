@@ -1,8 +1,8 @@
 import { parse } from 'csv-parse'
-import { transform } from 'stream-transform';
+
 import { parseObject } from './lib/index.js';
 import fs from 'fs'
-
+import util from "util"
 
 
 async function main() {
@@ -10,17 +10,14 @@ async function main() {
         parse({
             columns: true,
             skipRecordsWithEmptyValues: true,
-
         })
     )
-
+    let result = []
     for await (const record of csv) {
         const filtered = Object.fromEntries(Object.entries(record).filter(([_, v]) => v != ''));
-        parseObject(filtered)
-        console.log(parseObject(filtered))
-
+        result.push( parseObject(filtered))
     }
-
+    console.log(result)
 }
 
 main()
